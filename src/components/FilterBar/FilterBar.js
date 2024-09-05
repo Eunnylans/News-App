@@ -1,5 +1,5 @@
-// components/FilterBar.js
 import React, { useState } from 'react';
+import { FormControl, InputLabel, Select, MenuItem, Button, Box } from '@mui/material';
 
 const FilterBar = ({ setFilters }) => {
   const [category, setCategory] = useState('business');
@@ -13,26 +13,45 @@ const FilterBar = ({ setFilters }) => {
   };
 
   return (
-    <div className="filter-bar">
-      <label>
-        Category:
-        <select value={category} onChange={handleCategoryChange}>
-          <option value="business">Business</option>
-          <option value="technology">Technology</option>
-          <option value="sports">Sports</option>
-          <option value="health">Health</option>
-        </select>
-      </label>
-      <label>
-        Country:
-        <select value={country} onChange={handleCountryChange}>
-          <option value="us">US</option>
-          <option value="gb">UK</option>
-          <option value="ca">Canada</option>
-        </select>
-      </label>
-      <button onClick={applyFilters}>Apply Filters</button>
-    </div>
+    <Box 
+      sx={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        gap: 2, 
+        padding: 2, 
+        backgroundColor: '#f5f5f5', 
+        borderRadius: '8px' 
+      }}
+    >
+      <FormControl variant="outlined" sx={{ minWidth: 120 }}>
+        <InputLabel>Category</InputLabel>
+        <Select value={category} onChange={handleCategoryChange} label="Category">
+          <MenuItem value="business">Business</MenuItem>
+          <MenuItem value="technology">Technology</MenuItem>
+          <MenuItem value="sports">Sports</MenuItem>
+          <MenuItem value="health">Health</MenuItem>
+        </Select>
+      </FormControl>
+
+      <FormControl variant="outlined" sx={{ minWidth: 120 }}>
+        <InputLabel>Country</InputLabel>
+        <Select value={country} onChange={handleCountryChange} label="Country">
+          <MenuItem value="us">US</MenuItem>
+          <MenuItem value="gb">UK</MenuItem>
+          <MenuItem value="ca">Canada</MenuItem>
+        </Select>
+      </FormControl>
+
+      <Button 
+        variant="contained" 
+        color="primary" 
+        onClick={applyFilters} 
+        sx={{ height: '56px' }}
+      >
+        Apply Filters
+      </Button>
+    </Box>
   );
 };
 

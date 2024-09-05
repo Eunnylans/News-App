@@ -1,34 +1,199 @@
-/* App.css */
+/* Global Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
 
-.App {
-  text-align: center;
-  padding: 20px;
-}
-
-.filter-bar {
+h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #333;
   margin-bottom: 20px;
 }
 
-.news-list {
+/* App Container */
+.App {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.news-item {
+/* Filter Bar */
+.filter-bar {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.filter-bar label {
+  font-weight: 500;
+  color: #555;
+}
+
+.filter-bar select {
+  padding: 10px;
+  border-radius: 4px;
   border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.filter-bar button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-bar button:hover {
+  background-color: #0056b3;
+}
+
+/* News List */
+.news-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+/* News Item */
+.news-item {
+  background-color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: left;
+}
+
+.news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.news-item h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.news-item p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
 }
 
 .news-item a {
   color: #007BFF;
+  font-weight: 500;
   text-decoration: none;
 }
 
 .news-item a:hover {
+  color: #0056b3;
   text-decoration: underline;
+}
+
+/* Footer Styles (Optional for a polished look) */
+.footer {
+  margin-top: 40px;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.footer a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+  
+  /* General layout adjustments for mobile */
+  body {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  /* Adjust container for mobile */
+  .App {
+    padding: 16px;
+    max-width: 100%;
+  }
+
+  /* Make headlines smaller on mobile */
+  h1, h2, h3 {
+    font-size: 1.5rem; /* Smaller headlines for mobile */
+    text-align: center;
+  }
+
+  /* Adjust spacing for mobile */
+  .filter-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* Set select and button to full width on mobile */
+  .filter-bar select, .filter-bar button {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 12px;
+  }
+
+  /* Make cards in news list responsive */
+  .news-card {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  /* Adjust card content padding */
+  .news-card .MuiCardContent-root {
+    padding: 12px;
+  }
+
+  /* Image inside card */
+  .news-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Loading spinner centered */
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 }
