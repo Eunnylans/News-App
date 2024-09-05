@@ -1,20 +1,39 @@
-import axios from "axios";
+import axios from 'axios';
 
-const API_KEY = "Y70a269ec56d849f8a91b4524b379db6c";
-const BASE_URL = "https://newsapi.org/v2";
+const apiKey = '70a269ec56d849f8a91b4524b379db6c';
 
-const fetchNews = async (category = "general") => {
-  try {
-    const response = await axios.get(`${BASE_URL}/top-headlines`, {
+const NewsAPI = {
+  getTopHeadlines: (filters) => {
+    const { category, country } = filters;
+    return axios.get(`https://newsapi.org/v2/top-headlines`, {
       params: {
-        country: "us",
+        apiKey: apiKey,
         category: category,
-        apiKey: API_KEY,
+        country: country,
+        language: 'en',
       },
-    });
-    return response.data.articles;
-  } catch (error) {
-    console.error("Error fetching news", error);
+    }).then(response => response.data);
+  },
+
+  getEverything: (query) => {
+    return axios.get('https://newsapi.org/v2/everything', {
+      params: {
+        apiKey: apiKey,
+        q: query,
+        language: 'en',
+      },
+    }).then(response => response.data);
+  },
+
+  getSources: () => {
+    return axios.get('https://newsapi.org/v2/sources', {
+      params: {
+        apiKey: apiKey,
+        language: 'en',
+        country: 'us',
+      },
+    }).then(response => response.data);
   }
 };
-export default fetchNews;
+
+export default NewsAPI;

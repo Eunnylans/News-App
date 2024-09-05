@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import NewsList from './components/NewsList/NewsList';
+import FilterBar from './components/FilterBar/FilterBar';
+import NewsAPI from './services/NewsApi/NewsApi';
 
-function App() {
+const App = () => {
+  const [articles, setArticles] = useState([]);
+  const [filters, setFilters] = useState({ category: 'business', country: 'us' });
+
+  useEffect(() => {
+    // Fetch news when filters change
+    NewsAPI.getTopHeadlines(filters)
+      .then(response => setArticles(response.articles))
+      .catch(error => console.error('Error fetching news:', error));
+  }, [filters]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>News App</h1>
+      <FilterBar setFilters={setFilters} />
+      <NewsList articles={articles} />
     </div>
   );
-}
+};
 
 export default App;
+
+
+
