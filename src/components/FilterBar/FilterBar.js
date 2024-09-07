@@ -31,6 +31,7 @@ const FilterBar = ({ setFilters }) => {
           <MenuItem value="technology">Technology</MenuItem>
           <MenuItem value="sports">Sports</MenuItem>
           <MenuItem value="health">Health</MenuItem>
+          <MenuItem value="entertainment">Entertainment</MenuItem>
         </Select>
       </FormControl>
 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiKey = '70a269ec56d849f8a91b4524b379db6c';
+const apiKey =  process.env.REACT_APP_API_KEY;
 
 const NewsAPI = {
   getTopHeadlines: (filters) => {
